@@ -24,6 +24,8 @@ XUnit Option Given
     File Should Exist    ${OUTDIR}/log.html
     ${root} =    Parse XML    ${OUTDIR}/xunit.xml
     Should Be Equal    ${root.tag}    testsuite
+    Should match    ${root.attrib['time']}    ?.???
+    Should be true    ${root.attrib['time']} > 0
     ${tests} =    Get Elements    ${root}    testcase
     Length Should Be    ${tests}    19
     Should Be Equal    ${tests[7].attrib['name']}    Ñöñ-ÄŚÇÏÏ Tëśt äņd Këywörd Nämës, Спасибо
